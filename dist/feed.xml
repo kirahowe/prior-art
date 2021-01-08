@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prior Art</title>
+    <link>https://priorart.dev</link>
+    <description>Build your software on established foundations. Stop re-inventing the wheel so you can focus on your app.</description>
+    <lastBuildDate>Wed, 20 Jan 2021 20:11:50 -0500</lastBuildDate>
+    <atom:link href="https://priorart.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <generator>Morphy v0.0</generator>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+  </channel>
+</rss>
+

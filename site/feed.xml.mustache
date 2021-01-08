@@ -1,0 +1,26 @@
+---
+site/leave-path-alone: true
+site/no-layout: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prior Art</title>
+    <link>{{meta/root-url}}</link>
+    <description>Build your software on established foundations. Stop re-inventing the wheel so you can focus on your app.</description>
+    <lastBuildDate>{{meta/last-modified}}</lastBuildDate>
+    <atom:link href="{{meta/root-url}}/feed.xml" rel="self" type="application/rss+xml"/>
+    <generator>Morphy v0.0</generator>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+      {{#blog}}
+      <item>
+        <title>{{title}}</title>
+        <description>{{content}}</description>
+        <pubDate>{{rss-date}}</pubDate>
+        <link>{{meta/root-url}}{{slug}}</link>
+        <guid isPermaLink="true">{{meta/root-url}}{{slug}}</guid>
+      </item>
+    {{/blog}}
+  </channel>
+</rss>
+

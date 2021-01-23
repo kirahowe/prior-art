@@ -2,8 +2,8 @@
 /***************/
 
 :root {
-  --colour: #0091ab;
-  --colour-dark-mode: #64d1dd;
+  --teal: #0091ab;
+  --lighter-teal: #64d1dd;
   --literally-black: #000000;
   --darker-black: #242424;
   --black: #313131;
@@ -12,13 +12,37 @@
   --light-grey: #e1e1e1;
   --white: #fbfbfb;
   --small: 70%;
+
+  --colour: var(--teal);
+  --background: var(--white);
+  --text: var(--black);
+  --border: var(--light-grey);
+  --shadow: var(--medium-grey);
+  --code-background: var(--light-grey);
+  --code: var(--black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colour: var(--lighter-teal);
+    --background: var(--black);
+    --text: var(--light-grey);
+    --border: var(--darker-black);
+    --shadow: var(--literally-black);
+    --code-background: var(--darker-black);
+    --code: var(--white);
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
-  font-family: 'San Francisco', 'Helvetica Neue', 'Segoe UI', Roboto, Ubuntu, sans-serif;
-  color: var(--black);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: var(--text);
   line-height: 1.7;
-  background-color: var(--white);
+  background-color: var(--background);
   font-size: 22px;
 }
 
@@ -40,7 +64,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
-  border-bottom: 2px solid var(--light-grey);
+  letter-spacing: 0.07rem;
 }
 
 h1 {
@@ -102,89 +126,6 @@ dt {
   }
 }
 
-/* Dark mode */
-/*************/
-@media (prefers-color-scheme: dark) {
-  html {
-    color: var(--light-grey);
-    background-color: var(--black);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    border-bottom-color: var(--darker-black);
-  }
-
-  blockquote {
-    border-left: 0.5rem solid var(--light-grey);
-  }
-}
-
-/**********************************************************************/
-/* Header
-/**********************************************************************/
-
-header {
-  padding-top: 2rem;
-  line-height: 1;
-}
-
-header nav a {
-  fill: var(--colour);
-  display: inline-block;
-}
-
-header nav h1 {
-  border: none;
-}
-
-header nav a:hover, header nav a:focus,
-header nav a:visited:hover, header nav a:visited:focus {
-  fill: var(--white);
-  background: var(--colour);
-  outline: unset;
-}
-
-/* Dark Mode */
-/*************/
-@media (prefers-color-scheme: dark) {
-  header nav a {
-    fill: var(--colour-dark-mode);
-  }
-
-  header nav a:hover, header nav a:focus,
-  header nav a:visited:hover, header nav a:visited:focus {
-    fill: var(--black);
-    background: var(--colour-dark-mode);
-  }
-}
-
-/* Screens 750px or smaller */
-/****************************/
-@media only screen and (max-width: 750px) {
-  header h1 svg {
-    width: 278px;
-    height: 50px;
-  }
-
-  header h1 svg g {
-    transform: matrix(0.7, 0, 0, 0.7, 0, 0);
-  }
-
-  header svg g {
-    transform: matrix(0.4, 0, 0, 0.4, 0, 0);
-  }
-
-  header svg {
-    width: 158px;
-    height: 30px;
-  }
-
-  header h1 {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-}
-
 /**********************************************************************/
 /* Images
 /**********************************************************************/
@@ -193,9 +134,9 @@ img {
   max-width: 100%;
   display: block;
   margin: 2rem auto;
-  border: 10px solid var(--light-grey);
+  border: 10px solid var(--border);
   border-radius: 3px;
-  box-shadow: 4px 4px var(--medium-grey);
+  box-shadow: 4px 4px var(--shadow);
   box-sizing: border-box;
 }
 
@@ -221,15 +162,6 @@ figcaption {
   grid-template-rows: masonry;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 1rem;
-}
-
-/* Dark Mode */
-/*************/
-@media (prefers-color-scheme: dark) {
-  img {
-    border-color: var(--darker-black);
-    box-shadow: 4px 4px var(--literally-black);
-  }
 }
 
 /* Screens 750px or smaller */
@@ -295,7 +227,7 @@ main section ul:first-child li a {
 /**********************************************************************/
 
 footer {
-  border-top: 2px solid var(--light-grey);
+  border-top: 5px solid var(--border);
   color: var(--grey);
   display: flex;
   font-size: var(--small);
@@ -304,32 +236,12 @@ footer {
   align-items: center;
 }
 
-footer a {
-  display: flex;
-  margin-right: 1.5rem;
-  align-items: center;
-}
-
-footer p {
-  flex: 1;
-  text-align: right;
-}
-
-footer svg {
-  margin-right: 0.35rem;
-  fill: var(--grey);
-}
-
 /* Screens 750px or smaller */
 /****************************/
 @media only screen and (max-width: 750px) {
   footer {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  footer svg {
-    width: 18px;
   }
 }
 
@@ -342,44 +254,20 @@ a {
 }
 
 a:visited {
-  color: var(--black);
+  color: var(--text);
 }
 
 a:focus, a:hover {
   background: var(--colour);
-  color: var(--white);
+  color: var(--background);
   outline: 3px solid var(--colour);
   text-decoration: none;
 }
 
 a:visited:hover, a:visited:focus {
-  background: var(--black);
-  color: var(--white);
-  outline: 3px solid var(--black);
-}
-
-/* Dark Mode */
-/*************/
-@media (prefers-color-scheme: dark) {
-  a {
-    color: var(--colour-dark-mode);
-  }
-
-  a:visited {
-    color: var(--light-grey);
-  }
-
-  a:focus, a:hover {
-    background: var(--colour-dark-mode);
-    color: var(--black);
-    outline: 3px solid var(--colour-dark-mode);
-  }
-
-  a:visited:hover, a:visited:focus {
-    background: var(--light-grey);
-    color: var(--black);
-    outline: 3px solid var(--light-grey);
-  }
+  background: var(--text);
+  color: var(--background);
+  outline: 3px solid var(--text);
 }
 
 /**********************************************************************/
@@ -387,9 +275,9 @@ a:visited:hover, a:visited:focus {
 /**********************************************************************/
 
 code {
-  background: var(--light-grey);
+  background: var(--code-background);
   border-radius: 5px;
-  box-shadow: 2px 2px var(--medium-grey);
+  box-shadow: 2px 2px var(--shadow);
   font-family: Menlo, "Lucida Sans Typewriter", monospace;
   font-size: 0.85rem;
   margin: 0 0.1rem;
@@ -401,12 +289,13 @@ small code {
 }
 
 pre {
-  background: var(--light-grey);
+  background: var(--code-background);
   border-radius: 5px;
-  box-shadow: 2px 2px var(--medium-grey);
+  box-shadow: 2px 2px var(--shadow);
   font-size: 0.7rem;
   overflow-x: auto;
   padding: 0.5rem 1rem;
+  color: var(--code);
 }
 
 pre code {
@@ -414,17 +303,34 @@ pre code {
   padding: 0;
 }
 
-/* Dark Mode */
-/*************/
-@media (prefers-color-scheme: dark) {
-  code {
-    background: var(--darker-black);
-    box-shadow: 2px 2px var(--literally-black);
-  }
+/**********************************************************************/
+/* Forms
+/**********************************************************************/
 
-  pre {
-    background: var(--darker-black);
-    box-shadow: 2px 2px var(--literally-black);
-    color: var(--white);
-  }
+form button {
+  background-color: var(--colour);
+  border-radius: 3px;
+  border: none;
+  color: var(--background);
+  display: block;
+  font-weight: bold;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
 }
+
+input {
+  background-color: var(--background);
+  border-radius: 3px;
+  border: 2px solid var(--text);
+  color: var(--grey);
+  display: block;
+  margin-top: 1rem;
+  padding: 0.4rem;
+  width: 100%;
+}
+
+::placeholder {
+  opacity: 1;
+}
+

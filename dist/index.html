@@ -7,10 +7,10 @@
     <style>
       html {visibility: hidden; opacity:0;}
     </style>
-    <link rel="canonical" href="https://priorart.dev/" />
-    <link rel="stylesheet" href="/assets/normalize.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/assets/styles.css" type="text/css" media="screen" />
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://priorart.dev/">
+    <link rel="stylesheet" href="/assets/normalize.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/assets/styles.css" type="text/css" media="screen">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <link rel="alternate" href="https://priorart.dev/feed.xml" type="application/rss+xml" title="Prior Art">
 
     <meta property="og:title" content="Prior Art">
@@ -30,9 +30,25 @@
     <main>
       
       <section>
-  <ul>
+  <!-- <p>Make the internet suck less. Build better software by learning the foundations.</p> -->
+  <p>
     Under construction...
-  </ul>
+  </p>
+
+  <form action="https://tinyletter.com/priorart"
+        method="POST"
+        target="popupwindow"
+        onsubmit="window.open('https://tinyletter.com/priorart', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+
+    <h2>Build better software by learning the foundations.</h2>
+
+    <label for="tlemail" hidden>Your Email Address</label>
+    <input type="email" name="email" id="tlemail" placeholder="Your Email Address">
+    <input type="hidden" value="1" name="embed">
+    <button type="submit">Help me write better software!</button>
+
+    <small>You're signing up to receive a weekly digest of the latest content from Prior Art. I'll never send you spam. Unsubscribe at any time.</small>
+  </form>
 </section>
 
     </main>

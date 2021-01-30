@@ -1,0 +1,15 @@
+---
+title: All topics
+slug: tags
+---
+
+<h1>All topics</h1>
+<ul class="tags">
+{{# site/tags }}
+  <li>
+    <span><a href="{{ tag/slug }}">{{ tag/label }}</a></span>
+    <code>{{ tag/count }}</code>
+    <a class="rss" href="{{ tag/slug }}feed.xml">[RSS]</a>
+  </li>
+{{/ site/tags }}
+</ul>

@@ -92,6 +92,30 @@ body {
   font-weight: bold;
 }
 
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags code {
+  margin: 0 0.5rem;
+  font-size: var(--small);
+}
+
+.tags li span {
+  display: inline-block;
+  width: 9rem;
+}
+
+.tags li span:first-letter {
+  text-transform: capitalize;
+}
+
+.tags li .rss {
+  font-size: var(--small);
+}
+
 .banner {
   background-color: var(--banner-background);
   padding: 2rem 0;
@@ -318,16 +342,13 @@ footer form {
   margin-bottom: 1.5rem;
 }
 
-footer input {
-  background-color: var(--border);
-}
-
-footer form button {
-  color: var(--border);
-}
-
 footer p {
   margin: 0;
+}
+
+footer .cta {
+  color: var(--text);
+  font-size: 1rem;
 }
 
 /* Screens 750px or smaller */

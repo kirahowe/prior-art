@@ -4,7 +4,7 @@
     <title>Prior Art</title>
     <link>https://priorart.dev</link>
     <description>Build better software by learning the foundations. Stop re-inventing the wheel so you can focus on your app.</description>
-    <lastBuildDate>Sat, 30 Jan 2021 09:43:42 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jan 2021 13:30:21 -0500</lastBuildDate>
     <atom:link href="https://priorart.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <generator>Morphy v0.0</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -35,7 +35,7 @@
 &lt;p&gt;To write less complex (and therefore more reliable) software, make implicit state explicit and use immutable data structures. This minimizes the number of things you have to account for when looking at a single method/function, which makes it easier to write better software.&lt;/p&gt;
 &lt;p&gt;I daydream about a world where most software is written in &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Functional_languages&quot;&gt;languages&lt;/a&gt; that enforce these constraints by default, but in the meantime there are libraries in many popular programming languages (like &lt;a href=&quot;https://gist.github.com/jlongster/bce43d9be633da55053f&quot;&gt;JavaScript&lt;/a&gt;, &lt;a href=&quot;http://www.functionaljava.org/&quot;&gt;Java&lt;/a&gt;, and &lt;a href=&quot;https://pypi.org/project/immutables/&quot;&gt;Python&lt;/a&gt;) that can help.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 29 Jan 2021 00:00:00 -0500</pubDate>
+        <pubDate>Sat, 30 Jan 2021 00:00:00 -0500</pubDate>
         <link>https://priorart.dev/articles/state-makes-software-complex/</link>
         <guid isPermaLink="true">https://priorart.dev/articles/state-makes-software-complex/</guid>
       </item>

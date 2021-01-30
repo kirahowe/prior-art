@@ -1,0 +1,18 @@
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="300pt"
+   height="300pt"
+   viewBox="0 0 300 300">
+  <g
+     transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)"
+     fill="#fbfbfb"
+     stroke="none"
+     style="fill:#059b00; fill-opacity:1">
+    <path
+       d="M0 1500 l0 -1500 1500 0 1500 0 0 1500 0 1500 -1500 0 -1500 0 0 -1500z m857 390 c83 -151 152 -282 152 -290 0 -8 -68 -139 -152 -290 l-152 -275 -108 -3 c-59 -1 -107 0 -107 4 0 4 70 132 156 285 l156 279 -151 268 c-82 148 -153 276 -157 285 -6 16 3 17 102 15 l108 -3 153 -275z m1121 -740 l-3 -101 -395 0 -395 0 -3 101 -3 100 401 0 401 0 -3 -100z"
+       id="path24"
+       style="fill:#059b00; fill-opacity:1" />
+  </g>
+</svg>

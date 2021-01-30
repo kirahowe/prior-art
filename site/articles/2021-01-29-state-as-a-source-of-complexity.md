@@ -1,5 +1,5 @@
 ---
-date: 2021-01-29
+date: 2021-01-30
 title: State makes software complex
 site/tags:
     - complexity

@@ -1,9 +1,21 @@
-<section>
+<section class="banner">
+	<div class="constrain">
+    {{# message }}
+		<div class="message">
+		  <p>{{ message }}</p>
+		  <span><a href="/">✕</a></span>
+		</div>
+    {{/ message }}
+    <p><strong>Learn the fundamentals. Write better software. Enjoy programming more.</strong></p>
+    {{> email-form}}
+    <small>You'll receive an email with the latest posts and an update about what's coming next every other week or so.</small>
+	</div>
+</section>
+<section  class="constrain">
 	<h2>All Articles</h2>
   <ul>
   	{{# articles }}
       <li><a href={{ slug }}>{{ title }}</a></li>
   	{{/ articles }}
   </ul>
-  {{> email-signup }}
 </section>

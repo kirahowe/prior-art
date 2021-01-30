@@ -21,6 +21,7 @@
   --shadow: var(--medium-grey);
   --code-background: var(--light-grey);
   --code: var(--black);
+  --banner-background: var(--medium-grey);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -73,7 +74,7 @@ body {
 .message {
   background: var(--code-background);
   border-radius: 5px;
-  box-shadow: 2px 2px var(--shadow);
+  box-shadow: 2px 2px var(--muted-text);
   font-size: var(--small);
   padding: 0.5rem 1rem;
   color: var(--code);
@@ -83,11 +84,22 @@ body {
 
 .message p {
   margin: 0;
+  flex: 1;
 }
 
 .message a {
   margin-left: 1rem;
   font-weight: bold;
+}
+
+.banner {
+  background-color: var(--banner-background);
+  padding: 2rem 0;
+}
+
+.banner h2 {
+  margin: 0;
+  border: none;
 }
 
 h2, h3, h4, h5, h6 {
@@ -187,6 +199,22 @@ article > header ul li {
 
 article > header ul li:not(:last-child):after {
   content: ","
+}
+
+header svg {
+  width: 65px;
+  height: 65px;
+  margin-right: 1rem;
+}
+
+.home-link {
+  display: inline-block;
+}
+
+.home-link a {
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
 }
 
 /**********************************************************************/
@@ -380,11 +408,12 @@ pre code {
 
 form {
   padding: 1rem 0;
+  display: flex;
 }
 
 form span {
-  display: flex;
-  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  flex: 1;
 }
 
 form button {
@@ -393,13 +422,8 @@ form button {
   border: none;
   color: var(--background);
   font-weight: bold;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  width: 100%;
-}
-
-form input:first-child {
-  margin-right: 0.5rem;
 }
 
 input[aria-hidden="true"] {

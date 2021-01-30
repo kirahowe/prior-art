@@ -129,6 +129,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   border-bottom: 2px solid var(--border);
+  line-height: 1.2;
 }
 
 h1 {
@@ -231,6 +232,10 @@ article > header ul li {
 
 article > header ul li:not(:last-child):after {
   content: ","
+}
+
+article > ul li:not(:last-child) {
+  margin-bottom: 0.7rem;
 }
 
 header svg {

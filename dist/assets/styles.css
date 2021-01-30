@@ -379,13 +379,12 @@ pre code {
 /**********************************************************************/
 
 form {
-  display: flex;
   padding: 1rem 0;
 }
 
 form span {
-  margin-right: 0.5rem;
-  flex: 1;
+  display: flex;
+  margin-bottom: 0.5rem;
 }
 
 form button {
@@ -396,6 +395,17 @@ form button {
   font-weight: bold;
   padding: 0.5rem;
   cursor: pointer;
+  width: 100%;
+}
+
+form input:first-child {
+  margin-right: 0.5rem;
+}
+
+input[aria-hidden="true"] {
+  visibility: hidden;
+  position: absolute;
+  margin-left: -5000px;
 }
 
 input {

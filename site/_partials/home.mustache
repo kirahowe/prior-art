@@ -1,0 +1,9 @@
+<section>
+	<h2>All Articles</h2>
+  <ul>
+  	{{# articles }}
+      <li><a href={{ slug }}>{{ title }}</a></li>
+  	{{/ articles }}
+  </ul>
+  {{> email-signup }}
+</section>

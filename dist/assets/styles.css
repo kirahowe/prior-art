@@ -126,7 +126,7 @@ body {
   border: none;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   border-bottom: 2px solid var(--border);
 }
@@ -200,9 +200,17 @@ body > header {
   line-height: 1;
 }
 
+header > h1 {
+  border: none;
+}
+
 article > header {
   border-bottom: 2px solid var(--border);
   padding-bottom: 1rem;
+}
+
+article > header h1 {
+  margin-bottom: 0;
 }
 
 article > header span, article > header ul {
@@ -338,8 +346,8 @@ footer .links {
   justify-content: space-between;
 }
 
-footer form {
-  margin-bottom: 1.5rem;
+footer .links {
+  margin-top: 2rem;
 }
 
 footer p {

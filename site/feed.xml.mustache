@@ -7,12 +7,12 @@ site/no-layout: true
   <channel>
     <title>Prior Art</title>
     <link>{{meta/root-url}}</link>
-    <description>Build your software on established foundations. Stop re-inventing the wheel so you can focus on your app.</description>
+    <description>Build better software by learning the foundations. Stop re-inventing the wheel so you can focus on your app.</description>
     <lastBuildDate>{{meta/last-modified}}</lastBuildDate>
     <atom:link href="{{meta/root-url}}/feed.xml" rel="self" type="application/rss+xml"/>
     <generator>Morphy v0.0</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-      {{#blog}}
+      {{# articles}}
       <item>
         <title>{{title}}</title>
         <description>{{content}}</description>
@@ -20,7 +20,7 @@ site/no-layout: true
         <link>{{meta/root-url}}{{slug}}</link>
         <guid isPermaLink="true">{{meta/root-url}}{{slug}}</guid>
       </item>
-    {{/blog}}
+    {{/ articles}}
   </channel>
 </rss>
 

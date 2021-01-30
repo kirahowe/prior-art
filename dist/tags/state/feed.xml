@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prior Art</title>
-    <link>https://priorart.dev</link>
-    <description>Build better software by learning the foundations. Stop re-inventing the wheel so you can focus on your app.</description>
+    <title>Prior Art | State</title>
+    <link>https://priorart.dev/tags/state/</link>
+    <description>All Prior Art articles about state</description>
     <lastBuildDate>Fri, 29 Jan 2021 23:16:27 -0500</lastBuildDate>
-    <atom:link href="https://priorart.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://priorart.dev/tags/state/feed.xml" rel="self" type="application/rss+xml"/>
     <generator>Morphy v0.0</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
       <item>
@@ -41,4 +41,3 @@
       </item>
   </channel>
 </rss>
-

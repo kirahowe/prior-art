@@ -4,10 +4,17 @@
     <title>Prior Art</title>
     <link>https://priorart.dev</link>
     <description>Build better software by learning the foundations. Stop re-inventing the wheel so you can focus on your app.</description>
-    <lastBuildDate>Sat, 30 Jan 2021 16:00:03 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jan 2021 19:43:07 -0500</lastBuildDate>
     <atom:link href="https://priorart.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <generator>Morphy v0.0</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+      <item>
+        <title></title>
+        <description></description>
+        <pubDate></pubDate>
+        <link>https://priorart.dev/articles/2021-01-31-identity/</link>
+        <guid isPermaLink="true">https://priorart.dev/articles/2021-01-31-identity/</guid>
+      </item>
       <item>
         <title>How state makes software complex</title>
         <description>&lt;p&gt;What makes large codebases so hard to reason about, and so hard to extend? I really want to find out because I'm tired of losing my mind working on them. One paper I love called &amp;quot;&lt;a href=&quot;http://curtclifton.net/papers/MoseleyMarks06a.pdf&quot;&gt;Out of the Tar Pit&lt;/a&gt;&amp;quot;, by Ben Moseley and Peter Marks, argues that state is the main source of complexity in large software systems. This article is an overview of a couple of the ideas from that paper, along with some discussion about how we might conceptually think about necessary state in software in order to improve its overall quality.&lt;/p&gt;

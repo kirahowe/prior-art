@@ -34,6 +34,7 @@
     --shadow: var(--literally-black);
     --code-background: var(--darker-black);
     --code: var(--white);
+    --banner-background: var(--darker-black);
   }
 }
 

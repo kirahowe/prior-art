@@ -51,17 +51,7 @@
     	<article class="constrain">
     		<header>
     			<h1>How state makes software complex</h1>
-    			<span>by Kira McLean in </span>
-    			<ul>
-    				
-    				<li><a href="/tags/complexity/">complexity</a></li>
-    	      
-    				<li><a href="/tags/state/">state</a></li>
-    	      
-    			</ul>
-
     		</header>
-
     		<p>What makes large codebases so hard to reason about, and so hard to extend? I really want to find out because I'm tired of losing my mind working on them. One paper I love called &quot;<a href="http://curtclifton.net/papers/MoseleyMarks06a.pdf">Out of the Tar Pit</a>&quot;, by Ben Moseley and Peter Marks, argues that state is the main source of complexity in large software systems. This article is an overview of a couple of the ideas from that paper, along with some discussion about how we might conceptually think about necessary state in software in order to improve its overall quality.</p>
 <h2>How does state cause complexity?</h2>
 <p>The main issue with maintaining state in a program is that it quickly leads to a proliferation of different internal conditions that can affect the output. The more state there is, the more possible combinations it can be in, the harder it is to predict and wrap our heads around what the whole system is going to do with a given input. Every new piece of state introduced into a system dramatically increases the total number of possible states the whole thing can have, and this number quickly exceeds the capacity of our brains to conceptualize it all at once, which leads us to write code that behaves in unexpected ways. Bugs!</p>

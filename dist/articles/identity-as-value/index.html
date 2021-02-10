@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prior Art | Think of a thing's identity as it's value, not it's container</title>
+    <style>
+     html {visibility: hidden; opacity:0;}
+    </style>
+    <link rel="canonical" href="https://priorart.dev/articles/identity-as-value/">
+    <link rel="stylesheet" href="/assets/normalize.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/assets/styles.css?v=1.0.3" type="text/css" media="screen">
+    <link rel="icon" href="/assets/logo.png">
+    <link rel="apple-touch-icon" href="/assets/logo.png">
+    <link rel="alternate" href="https://priorart.dev/feed.xml" type="application/rss+xml" title="Prior Art">
+
+    <script src="https://lizard.priorart.dev/script.js" data-site="WPMOFAZS" defer></script>
+
+    <meta property="og:title" content="Think of a thing's identity as it's value, not it's container">
+    <meta property="og:description" content="Writing code that works is hard. I've been exploring things that make software complex in an attempt to learn how to write better code. I guess &quot;better&quot; is subjective, but...">
+    <meta property="og:url" content="https://priorart.dev/articles/identity-as-value/">
+    <meta property="og:image" content="https://priorart.dev/assets/images/logo.png">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Prior Art">
+    <meta name="og:image:alt" content="Prior Art">
+    <meta name="twitter:card" content="summary">
+  </head>  <body>
+    <header>
+      <nav class="constrain">
+        <div class="home-link"><a aria-label="Prior Art" href="/"><svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="300pt"
+   height="300pt"
+   viewBox="0 0 300 300">
+  <g
+     transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)"
+     fill="#fbfbfb"
+     stroke="none"
+     style="fill:#059b00; fill-opacity:1">
+    <path
+       d="M0 1500 l0 -1500 1500 0 1500 0 0 1500 0 1500 -1500 0 -1500 0 0 -1500z m857 390 c83 -151 152 -282 152 -290 0 -8 -68 -139 -152 -290 l-152 -275 -108 -3 c-59 -1 -107 0 -107 4 0 4 70 132 156 285 l156 279 -151 268 c-82 148 -153 276 -157 285 -6 16 3 17 102 15 l108 -3 153 -275z m1121 -740 l-3 -101 -395 0 -395 0 -3 101 -3 100 401 0 401 0 -3 -100z"
+       id="path24"
+       style="fill:#059b00; fill-opacity:1" />
+  </g>
+</svg>Prior Art</a></div>
+      </nav>
+    </header>
+    <main>
+    	<article class="constrain">
+    		<header>
+    			<h1>Think of a thing's identity as it's value, not it's container</h1>
+    		</header>
+    		<p>Writing code that works is hard. I've been exploring things that make software complex in an attempt to learn how to write better code. I guess &quot;better&quot; is subjective, but in this case I mean &quot;easier to change&quot; and &quot;with fewer bugs&quot;. <a href="/articles/how-state-makes-software-complex/">State</a> is one big factor that makes software complex. Most code that does anything useful needs state, though.</p>
+<p>How we model that state can make a big difference in how easy or hard it is to understand code. It really comes down to reference vs. value equality semantics, but those are abstract terms and ways of thinking about things that nobody really talks about in real life.</p>
+<p>It's easy to gloss over this topic in a conversation about computery things, but it's one that's really worth thinking about a bit because it can have a big impact on our ability to write code that works.</p>
+<h2>Reference semantics</h2>
+<p>In most of the popular languages, each object is a unique, distinct thing, regardless of its current state. Take the example of dates in JavaScript:</p>
+<pre><code class="language-javascript">&gt; date = new Date()                // Thu Jan 28 2021 21:54:34 GMT-0500 (EST)
+&gt; date.setDate(date.getDate() + 1) // 1611975274726
+&gt; date                             // Fri Jan 29 2021 21:54:34 GMT-0500 (EST)
+&gt; date === date                    // true
+</code></pre>
+<p>We make a new date, then change the internal state of that date, setting its current value to tomorrow, yet we still say it's the same date.</p>
+<p>The thing is, it's not the same date. January 28th <em>is not the same</em> as January 29th, but the way we describe objects in most programming languages forces us to wrap our heads around this unnatural way of thinking about what something is.</p>
+<p>The flip side is equally confusing -- when you look at things that seem like they should be equal but aren't. Like in JavaScript again:</p>
+<pre><code class="language-javascript">[1, 2, 3] === [1, 2, 3] // false
+</code></pre>
+<p>You can see that  <code>[1, 2, 3]</code> is actually the same as <code>[1, 2, 3]</code>, and there are a lot of situations where it would be convenient to be able to check that programatically, but in most languages they're not actually equivalent, because each thing (array of 1, 2, 3, in this case) is a unique entity. The <em>identity</em> of a thing is defined as the container, the object that holds all the attributes. The current value of those attributes does not affect an object's identity in these languages.</p>
+<h2>Re-inventing equality</h2>
+<p>Thinking of identity this way forces us to re-invent what it means for things to be equal. In languages that refer to a container of attributes as a thing's identity, we have to re-define what equality means in some domain-specific sense for each new type of object. In order to check whether two obejcts are equal, you have to write extra code to check whether the <em>current value</em> of their attributes are equal. That can add up to a lot of extra code!</p>
+<p>It also adds the issue of having to think about time to our code, because in this world whether two things are equal or not depends on the values of their attributes <em>at the instant</em> you check, but that could change. To check whether two things are equal you have to effectively pause the universe and grab a snapshot. All of this adds unnecessary complexity to code. It's unnecessary because it's imposed by the language, not a consequence of logical constraints.</p>
+<h2>Unwrap your data and think in values instead</h2>
+<p>We can get rid of this entire category of problem by thinking about a thing's identity as it's <em>value</em> directly, intead of wrapping it in a container and calling that the identity. There are a lot of languages where the equivalent of <code>[1, 2, 3] === [1, 2, 3]</code> <em>is</em> true, as we can intuitively see that it is.</p>
+<p>Working with data directly like this is much easier to reason about and removes whole categories of problems to free up your mental bandwidth to work on your actual app, not problems introduced by your language.</p>
+<p>You never have to care again about what fields to compare to see if things are equal. This also solves the time problem, because values are inherently immutable. 2 is always 2, it will never be different no matter how much later you check. This means you no longer have to care about <em>when</em> objects change in your code -- if you unwrap the objects and just work with values directly, it suddenly becomes possible to zero in on one tiny piece of your code and stop caring about how all the rest of it might affect the value you're currently trying to do something with.</p>
+<h2>Reference semantics add unnecessary complexity</h2>
+<p>The biggest win with writing code this way -- using naked, immutable data structures -- is that it reduces the complexity of your whole codebase. The value of a given thing is always transparent, and never changes over time. This removes whole classes of complexity that we can just stop caring about. You never have to worry again about what other methods might sneakily change the thing you're working with. And you don't have to care about <em>when</em> things happen anymore, either. You can always know that whatever value you're dealing with is static for the purposes of your current context.</p>
+<p>Clojure is one language that is designed like this by default, but it's possble to write code this way in many languages. Give it a try and see what you think!</p>
+
+    		<p class="published"><em>Originally published on <time datetime="February 9, 2021">February 9, 2021</time></em></p>
+    	</article>    </main>
+
+    <footer>
+    	<div class="constrain">
+        <p class="cta">Get the latest updates from Prior Art in your inbox:</p>
+    		<form
+  action="https://buttondown.email/api/emails/embed-subscribe/priorart"
+  method="post">
+  <span>
+  <input type="email" name="email" placeholder="Your Email Address" aria-label="Your Email Address" />
+  <input type="hidden" value="1" name="embed" />
+  </span>
+  <button type="submit">Help me write better software!</button>
+</form>
+    		<p>You'll receive an email with the latest posts and updates about what's coming next every other week or so. No spam, ever. Unsubscribe anytime.</p>
+        <div class="links">
+  <ul>
+    <li><a href="/feed.xml">Subscribe via RSS</a></li>
+    <li><a href="https://twitter.com/kiraemclean" rel="me">Follow me on Twitter</a></li>
+  </ul>
+
+  <nav>
+    <ul>
+      <li><a href="/about/">What is this?</a></li>
+      <li><a href="/tags/">All Topics</a></li>
+    </ul>
+  </nav>
+
+  <p>&copy; Kira McLean 2021</p>
+</div>
+    	</div>
+    </footer>  </body>
+</html>

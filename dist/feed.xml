@@ -4,16 +4,42 @@
     <title>Prior Art</title>
     <link>https://priorart.dev</link>
     <description>Build better software by learning the foundations. Stop re-inventing the wheel so you can focus on your app.</description>
-    <lastBuildDate>Sat, 30 Jan 2021 19:43:07 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 9 Feb 2021 21:38:53 -0500</lastBuildDate>
     <atom:link href="https://priorart.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <generator>Morphy v0.0</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
       <item>
-        <title></title>
-        <description></description>
-        <pubDate></pubDate>
-        <link>https://priorart.dev/articles/2021-01-31-identity/</link>
-        <guid isPermaLink="true">https://priorart.dev/articles/2021-01-31-identity/</guid>
+        <title>Think of a thing's identity as it's value, not it's container</title>
+        <description>&lt;p&gt;Writing code that works is hard. I've been exploring things that make software complex in an attempt to learn how to write better code. I guess &amp;quot;better&amp;quot; is subjective, but in this case I mean &amp;quot;easier to change&amp;quot; and &amp;quot;with fewer bugs&amp;quot;. &lt;a href=&quot;/articles/how-state-makes-software-complex/&quot;&gt;State&lt;/a&gt; is one big factor that makes software complex. Most code that does anything useful needs state, though.&lt;/p&gt;
+&lt;p&gt;How we model that state can make a big difference in how easy or hard it is to understand code. It really comes down to reference vs. value equality semantics, but those are abstract terms and ways of thinking about things that nobody really talks about in real life.&lt;/p&gt;
+&lt;p&gt;It's easy to gloss over this topic in a conversation about computery things, but it's one that's really worth thinking about a bit because it can have a big impact on our ability to write code that works.&lt;/p&gt;
+&lt;h2&gt;Reference semantics&lt;/h2&gt;
+&lt;p&gt;In most of the popular languages, each object is a unique, distinct thing, regardless of its current state. Take the example of dates in JavaScript:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&amp;gt; date = new Date()                // Thu Jan 28 2021 21:54:34 GMT-0500 (EST)
+&amp;gt; date.setDate(date.getDate() + 1) // 1611975274726
+&amp;gt; date                             // Fri Jan 29 2021 21:54:34 GMT-0500 (EST)
+&amp;gt; date === date                    // true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We make a new date, then change the internal state of that date, setting its current value to tomorrow, yet we still say it's the same date.&lt;/p&gt;
+&lt;p&gt;The thing is, it's not the same date. January 28th &lt;em&gt;is not the same&lt;/em&gt; as January 29th, but the way we describe objects in most programming languages forces us to wrap our heads around this unnatural way of thinking about what something is.&lt;/p&gt;
+&lt;p&gt;The flip side is equally confusing -- when you look at things that seem like they should be equal but aren't. Like in JavaScript again:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[1, 2, 3] === [1, 2, 3] // false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see that  &lt;code&gt;[1, 2, 3]&lt;/code&gt; is actually the same as &lt;code&gt;[1, 2, 3]&lt;/code&gt;, and there are a lot of situations where it would be convenient to be able to check that programatically, but in most languages they're not actually equivalent, because each thing (array of 1, 2, 3, in this case) is a unique entity. The &lt;em&gt;identity&lt;/em&gt; of a thing is defined as the container, the object that holds all the attributes. The current value of those attributes does not affect an object's identity in these languages.&lt;/p&gt;
+&lt;h2&gt;Re-inventing equality&lt;/h2&gt;
+&lt;p&gt;Thinking of identity this way forces us to re-invent what it means for things to be equal. In languages that refer to a container of attributes as a thing's identity, we have to re-define what equality means in some domain-specific sense for each new type of object. In order to check whether two obejcts are equal, you have to write extra code to check whether the &lt;em&gt;current value&lt;/em&gt; of their attributes are equal. That can add up to a lot of extra code!&lt;/p&gt;
+&lt;p&gt;It also adds the issue of having to think about time to our code, because in this world whether two things are equal or not depends on the values of their attributes &lt;em&gt;at the instant&lt;/em&gt; you check, but that could change. To check whether two things are equal you have to effectively pause the universe and grab a snapshot. All of this adds unnecessary complexity to code. It's unnecessary because it's imposed by the language, not a consequence of logical constraints.&lt;/p&gt;
+&lt;h2&gt;Unwrap your data and think in values instead&lt;/h2&gt;
+&lt;p&gt;We can get rid of this entire category of problem by thinking about a thing's identity as it's &lt;em&gt;value&lt;/em&gt; directly, intead of wrapping it in a container and calling that the identity. There are a lot of languages where the equivalent of &lt;code&gt;[1, 2, 3] === [1, 2, 3]&lt;/code&gt; &lt;em&gt;is&lt;/em&gt; true, as we can intuitively see that it is.&lt;/p&gt;
+&lt;p&gt;Working with data directly like this is much easier to reason about and removes whole categories of problems to free up your mental bandwidth to work on your actual app, not problems introduced by your language.&lt;/p&gt;
+&lt;p&gt;You never have to care again about what fields to compare to see if things are equal. This also solves the time problem, because values are inherently immutable. 2 is always 2, it will never be different no matter how much later you check. This means you no longer have to care about &lt;em&gt;when&lt;/em&gt; objects change in your code -- if you unwrap the objects and just work with values directly, it suddenly becomes possible to zero in on one tiny piece of your code and stop caring about how all the rest of it might affect the value you're currently trying to do something with.&lt;/p&gt;
+&lt;h2&gt;Reference semantics add unnecessary complexity&lt;/h2&gt;
+&lt;p&gt;The biggest win with writing code this way -- using naked, immutable data structures -- is that it reduces the complexity of your whole codebase. The value of a given thing is always transparent, and never changes over time. This removes whole classes of complexity that we can just stop caring about. You never have to worry again about what other methods might sneakily change the thing you're working with. And you don't have to care about &lt;em&gt;when&lt;/em&gt; things happen anymore, either. You can always know that whatever value you're dealing with is static for the purposes of your current context.&lt;/p&gt;
+&lt;p&gt;Clojure is one language that is designed like this by default, but it's possble to write code this way in many languages. Give it a try and see what you think!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 9 Feb 2021 00:00:00 -0500</pubDate>
+        <link>https://priorart.dev/articles/identity-as-value/</link>
+        <guid isPermaLink="true">https://priorart.dev/articles/identity-as-value/</guid>
       </item>
       <item>
         <title>How state makes software complex</title>

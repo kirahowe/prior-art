@@ -1,15 +1,7 @@
 <article class="constrain">
 	<header>
 		<h1>{{ title }}</h1>
-		<span>by Kira McLean in </span>
-		<ul>
-			{{# site/tags }}
-			<li><a href="{{ tag/slug }}">{{ tag/label }}</a></li>
-      {{/ site/tags }}
-		</ul>
-
 	</header>
-
 	{{{ content }}}
 	<p class="published"><em>Originally published on <time datetime="{{date}}">{{date}}</time></em></p>
 </article>

@@ -28,7 +28,7 @@
   :root {
     --colour: var(--lighter-green);
     --background: var(--black);
-    --text: var(--light-grey);
+    --text: #d9d9d9;
     --muted-text: var(--medium-grey);
     --border: var(--darker-black);
     --shadow: var(--literally-black);
@@ -119,10 +119,10 @@ body {
 
 .banner {
   background-color: var(--banner-background);
-  padding: 2rem 0;
+  padding-bottom: 2rem ;
 }
 
-.banner h2 {
+.banner h2, .banner p {
   margin: 0;
   border: none;
 }
@@ -318,9 +318,8 @@ figcaption {
 /**********************************************************************/
 
 main section ul:first-of-type {
-  list-style: none;
   margin: 0;
-  padding: 0
+  padding: 0 1rem;
 }
 
 main section ul:first-child li a {
@@ -427,7 +426,8 @@ pre {
   border-radius: 5px;
   box-shadow: 2px 2px var(--shadow);
   font-size: var(--small);
-  overflow-x: auto;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   padding: 0.5rem 1rem;
   color: var(--code);
 }

@@ -22,6 +22,7 @@
   --code-background: var(--light-grey);
   --code: var(--black);
   --banner-background: var(--medium-grey);
+  --message-background: var(--light-grey);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +36,7 @@
     --code-background: var(--darker-black);
     --code: var(--white);
     --banner-background: var(--darker-black);
+    --message-background: var(--literally-black);
   }
 }
 
@@ -73,14 +75,14 @@ body {
 }
 
 .message {
-  background: var(--code-background);
+  background: var(--message-background);
   border-radius: 5px;
   box-shadow: 2px 2px var(--muted-text);
   font-size: var(--small);
   padding: 0.5rem 1rem;
   color: var(--code);
   display: flex;
-  margin: 1rem 0 3rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 .message p {
@@ -119,7 +121,7 @@ body {
 
 .banner {
   background-color: var(--banner-background);
-  padding-bottom: 2rem ;
+  padding: 1rem 0 2rem 0;
 }
 
 .banner h2, .banner p {

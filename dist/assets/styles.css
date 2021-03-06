@@ -71,7 +71,7 @@ body {
   max-width: 38rem;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 2rem 1rem;
 }
 
 .message {
@@ -121,7 +121,6 @@ body {
 
 .banner {
   background-color: var(--banner-background);
-  padding: 1rem 0 2rem 0;
 }
 
 .banner h2, .banner p {
@@ -202,6 +201,10 @@ body > header {
   background-color: var(--border);
   padding: 2rem 0;
   line-height: 1;
+}
+
+header .constrain {
+  padding: 0 1rem;
 }
 
 header > h1 {

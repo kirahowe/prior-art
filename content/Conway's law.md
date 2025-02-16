@@ -1,0 +1,1 @@
+- need to observe the communication structure of an organization before designing architecture for it
